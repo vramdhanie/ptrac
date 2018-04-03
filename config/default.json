@@ -6,5 +6,48 @@
     "default": 10,
     "max": 50
   },
-  "mongodb": "mongodb://localhost:27017/ptrac"
+  "mongodb": "mongodb://localhost:27017/ptrac",
+  "authentication": {
+    "secret": "3e281bc528d8a486955caf21d552c73beac3f701620a93601ad33c2d9c8d97d06d002ccbd2dbd1463647618951acd966b81cf838436314a216e9e9ed2bb6c92f9705d8189d44a9ea2fee813e3adf74534ea8810063d1a3728b6b40136fd107a930558eddb54a1a609e67756f9d4ce39ac1f07d0e14a48662d8446257506d898f54b0ef845e2b40cf58958b5af1b5c97effdee57521d822b540ca1a4fdcac9a0e21fb80d5f7f46536a24cbcbaf9281ac777f19baf67c34624a10316632107fecb79d2a6b6d4df749e1ffd021c319fdc2bc7907e3c2a6d8544f1021e15dd1c67d18c24843f1cb4c19f8e937ace38a89b7bde7f75b309968a55f9ac0eb4742f4f78",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "google": {
+      "clientID": "your google client id",
+      "clientSecret": "your google client secret",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "github": {
+      "clientID": "your github client id",
+      "clientSecret": "your github client secret",
+      "successRedirect": "/"
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  }
 }
