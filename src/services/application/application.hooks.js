@@ -1,11 +1,12 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
+const { encryption } = require('../../hooks/encryption');
 
 module.exports = {
   before: {
     all: [authenticate('jwt')],
     find: [],
     get: [],
-    create: [],
+    create: [encryption],
     update: [],
     patch: [],
     remove: []

@@ -11,7 +11,8 @@ module.exports = function (app) {
     url: {type: String},
     hint: {type: String},
     pin: {type: String},
-    text: { type: String, required: true },
+    note: { type: String, required: true },
+    password: {type: String},
     archive: {type: Boolean, default: false}
   }, {
     timestamps: true
